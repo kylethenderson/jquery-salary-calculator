@@ -14,6 +14,26 @@ header h1 {
     padding: 40px 0px;
     text-transform: uppercase;
 }
+#inputWrapper {
+    max-width: 90vw;
+    margin: 0 auto;
+}
+input {
+    font-size: 16px;
+    width: calc(85vw / 6);
+    border-radius: 5px;
+    border: 1px solid rgba(34, 34, 34, .5);
+    padding: 10px 0px 10px 5px;
+}
+#addEmployee {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgba(61, 122, 59, .75);
+    color: white;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
 #mainWrapper h2 {
     margin-left: 50px;
     font-size: 28px;
@@ -60,5 +80,8 @@ td {
     text-align: right;
 }
 .totalDisplayWrapper h2 {
-    padding-right: 50px;
+    display: inline-block;
+    padding: 25px 50px 25px 50px;
+    margin: 25px;
+    border-radius: 5px;
 }

@@ -84,6 +84,15 @@ function updateTotalMonthly() {
         console.log(totalSalary);
     }
     totalMonthly = totalSalary/12;
+    console.log(totalMonthly);
+    console.log(typeof totalMonthly);
+    if ( totalMonthly > 20000 ) {
+        $('.totalDisplayWrapper h2').css('background-color', '#b10021');
+        $('.totalDisplayWrapper h2').css('color', '#ffffff');
+    } else {
+        $('.totalDisplayWrapper h2').css('background-color', '#ffffff');
+        $('.totalDisplayWrapper h2').css('color', '#000000');
+    }
     // format totalMonthly to currency. 
     $('#totalMonthly').html(totalMonthly);
 
