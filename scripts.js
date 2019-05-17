@@ -57,8 +57,13 @@ function addEmployee() {
 
 function updateEmployeeTable() {
     $('#employeeTableBody').empty();
+    $('#employeeTableBody').append(`
+        <tr>
+            <td colspan="6" id="emptyRow">&nbsp</td><!-- Empty row -->
+        </tr>
+    `)
     for (let employee of employees) {
-        $('#employeeTableBody').append(`
+        $('#employeeTableBody').prepend(`
             <tr>
                 <td>${employee.firstName}</td>
                 <td>${employee.lastName}</td>
@@ -78,7 +83,8 @@ function updateTotalMonthly() {
         totalSalary += employee.annualSalary;
         console.log(totalSalary);
     }
-    totalMonthly = totalSalary/12; // format for $ later
+    totalMonthly = totalSalary/12;
+    // format totalMonthly to currency. 
     $('#totalMonthly').html(totalMonthly);
 
 }
