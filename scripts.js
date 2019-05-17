@@ -1,13 +1,13 @@
 console.log('JS');
 
 let employees = [
-    {
-        firstName: 'Jen',
-        lastName: 'Barber',
-        employeeId: '4521',
-        title: 'Team Lead',
-        annualSalary: 80000
-    }
+    // {
+    //     firstName: 'Jen',
+    //     lastName: 'Barber',
+    //     employeeId: '4521',
+    //     title: 'Team Lead',
+    //     annualSalary: 80000
+    // }
 ];
 
 $(document).ready(domReady);
@@ -24,7 +24,7 @@ function addEmployee() {
     let lastName = $('#lastName').val()
     let employeeId = $('#employeeId').val()
     let title = $('#title').val()
-    let annualSalary = $('#annualSalary').val()
+    let annualSalary = Number($('#annualSalary').val())
 
     let newEmployee = {
         firstName: firstName,
@@ -35,12 +35,13 @@ function addEmployee() {
     }
 
     employees.push(newEmployee);
-
+    $('input').val('')
     updateEmployeeTable();
 
 } // end of addEmployee
 
 function updateEmployeeTable() {
+    $('#employeeTableBody').empty();
     for (let employee of employees) {
         $('#employeeTableBody').append(`
             <tr>
@@ -60,7 +61,9 @@ function updateTotalMonthly() {
     let totalSalary = 0;
     for ( let employee of employees ) {
         totalSalary += employee.annualSalary;
+        console.log(totalSalary);
     }
-    $('#totalMonthly').html(totalSalary);
+    totalMonthly = totalSalary/12; // format for $ later
+    $('#totalMonthly').html(totalMonthly);
 
 }
