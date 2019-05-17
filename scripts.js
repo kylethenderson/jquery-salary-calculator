@@ -1,11 +1,20 @@
 console.log('JS');
 
-let employees = [];
+let employees = [
+    {
+        firstName: 'Jen',
+        lastName: 'Barber',
+        employeeId: '4521',
+        title: 'Team Lead',
+        annualSalary: 80000
+    }
+];
 
 $(document).ready(domReady);
 
 function domReady() {
     console.log('JQ');
+    updateEmployeeTable();
     $('#addEmployee').on('click', addEmployee);
 } // end of domReady
 
@@ -44,4 +53,14 @@ function updateEmployeeTable() {
             </tr>
         `)
     }
+    updateTotalMonthly();
+}
+
+function updateTotalMonthly() {
+    let totalSalary = 0;
+    for ( let employee of employees ) {
+        totalSalary += employee.annualSalary;
+    }
+    $('#totalMonthly').html(totalSalary);
+
 }
