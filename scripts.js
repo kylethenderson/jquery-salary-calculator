@@ -35,23 +35,32 @@ function domReady() {
 
 
 function addEmployee() {
+    $('input').removeClass('error-border');
+    
     let firstName = $('#firstName').val()
     let lastName = $('#lastName').val()
     let employeeId = $('#employeeId').val()
     let title = $('#title').val()
     let annualSalary = Number($('#annualSalary').val())
 
-    let newEmployee = {
-        firstName: firstName,
-        lastName: lastName,
-        employeeId: employeeId,
-        title: title,
-        annualSalary: annualSalary
+    if ( firstName.length && lastName.length && employeeId.length && title.length && annualSalary.length ) {
+        let newEmployee = {
+            firstName: firstName,
+            lastName: lastName,
+            employeeId: employeeId,
+            title: title,
+            annualSalary: annualSalary
+        }
+        employees.push(newEmployee);
+        $('input').val('')
+        updateEmployeeTable();
+    } // if all inputs have values
+    else {
+        let inputs = $('input');
+        for ( input of inputs ) {
+            console.log(input);
+        }
     }
-
-    employees.push(newEmployee);
-    $('input').val('')
-    updateEmployeeTable();
 
 } // end of addEmployee
 

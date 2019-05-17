@@ -25,6 +25,9 @@ input {
     border: 1px solid rgba(34, 34, 34, .5);
     padding: 10px 0px 10px 5px;
 }
+.error-border {
+    border: 2px solid red;
+}
 #addEmployee {
     padding: 10px 20px;
     border-radius: 5px;
@@ -52,7 +55,7 @@ th {
     min-width: calc((100vw - 200px) / 6);
     background-color: rgba(57, 76, 107, .5);
     text-align: left;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 400;
 }
 
