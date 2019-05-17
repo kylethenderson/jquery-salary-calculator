@@ -1,13 +1,13 @@
 console.log('JS');
 
 let employees = [
-    // {
-    //     firstName: 'Jen',
-    //     lastName: 'Barber',
-    //     employeeId: '4521',
-    //     title: 'Team Lead',
-    //     annualSalary: 80000
-    // }
+    {
+        firstName: 'Jen',
+        lastName: 'Barber',
+        employeeId: '4521',
+        title: 'Team Lead',
+        annualSalary: 80000
+    }
 ];
 
 $(document).ready(domReady);
@@ -16,6 +16,7 @@ function domReady() {
     console.log('JQ');
     updateEmployeeTable();
     $('#addEmployee').on('click', addEmployee);
+    $('#employeeTableBody').on('click', '.deleteEmployee button', deleteEmployee);
 } // end of domReady
 
 
@@ -50,7 +51,7 @@ function updateEmployeeTable() {
                 <td>${employee.employeeId}</td>
                 <td>${employee.title}</td>
                 <td>$ ${employee.annualSalary}</td>
-                <td><button class="deleteEmployee">Delete</button></td>
+                <td class="deleteEmployee"><button>Delete</button></td>
             </tr>
         `)
     }
@@ -66,4 +67,8 @@ function updateTotalMonthly() {
     totalMonthly = totalSalary/12; // format for $ later
     $('#totalMonthly').html(totalMonthly);
 
+}
+
+function deleteEmployee() {
+    console.log('delete clicked');
 }
