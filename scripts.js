@@ -7,6 +7,20 @@ let employees = [
         employeeId: '4521',
         title: 'Team Lead',
         annualSalary: 80000
+    },
+    {
+        firstName: 'Maurice',
+        lastName: 'Moss',
+        employeeId: '8724',
+        title: 'Support Team',
+        annualSalary: 58000
+    },
+    {
+        firstName: 'Roy',
+        lastName: 'Smith',
+        employeeId: '9623',
+        title: 'Quality Assurance',
+        annualSalary: 48000
     }
 ];
 
@@ -51,7 +65,7 @@ function updateEmployeeTable() {
                 <td>${employee.employeeId}</td>
                 <td>${employee.title}</td>
                 <td>$ ${employee.annualSalary}</td>
-                <td class="deleteEmployee"><button>Delete</button></td>
+                <td class="deleteEmployee"><button id="${employee.employeeId}">Delete</button></td>
             </tr>
         `)
     }
@@ -70,5 +84,6 @@ function updateTotalMonthly() {
 }
 
 function deleteEmployee() {
-    console.log('delete clicked');
+    employees = employees.filter( employee => employee.employeeId != this.id );
+    updateEmployeeTable();
 }
