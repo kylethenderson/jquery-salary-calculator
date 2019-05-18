@@ -1,6 +1,28 @@
 console.log('JS');
 
-let employees = [];
+let employees = [
+    {
+        firstName: 'Steve',
+        lastName: 'Rodgers',
+        employeeId: '1',
+        title: 'Captain America',
+        annualSalary: 50000
+    },
+    {
+        firstName: 'Tony',
+        lastName: 'Stark',
+        employeeId: '3',
+        title: 'Iron Man',
+        annualSalary: 75000
+    },
+    {
+        firstName: 'Carol',
+        lastName: 'Danvers',
+        employeeId: '2',
+        title: 'Captain Marvel',
+        annualSalary: 50000
+    }
+];
 
 $(document).ready(domReady);
 
@@ -16,7 +38,7 @@ function addEmployee() {
     let requiredInputs = $('.required');
     $(requiredInputs).removeClass('error-border');
     
-    // get the data from tne inputs
+    // get the data from the inputs
     let first = $('#firstName').val();
     let last = $('#lastName').val();
     let id = $('#employeeId').val();
@@ -24,12 +46,12 @@ function addEmployee() {
     let salary = $('#annualSalary').val();
 
     if ( first.length && last.length && id.length && title.length && salary.length ) {
-        // if there are values, create a new object with the data
+        // if all have values, create a new object with the data
         let newEmployee = createEmployee(first, last, id, title, Number(salary));
         employees.push(newEmployee);
         $('input').val('') // clear the inputs
         updateEmployeeTable(); // update the table
-        $('#firstName').focus();
+        $('#firstName').focus(); // move cursor back to first input
     } // end if all inputs have values
     else {
         // if there's a missing input
@@ -39,7 +61,7 @@ function addEmployee() {
             $('#'+input.id).addClass('error-border');
           } // end if to check each input for data
         } // end for to check each input for !empty
-        $('#errorMsg').html("Please fill out required fields."); // add error message if an input is missing
+        $('#errorMsg').html("*Please fill out required fields."); // add error message if an input is missing
       }
 
 } // end of addEmployee
@@ -47,8 +69,8 @@ function addEmployee() {
 function checkForEnter() {
     if ( event.which === 13 ) {
         addEmployee();
-    }
-}
+    } // end call addEmployee if keypress is 'enter'
+} // end checkForEnter
 
 function updateEmployeeTable() {
     $('#employeeTableBody').empty();
@@ -64,7 +86,7 @@ function updateEmployeeTable() {
                 <td>${employee.lastName}</td>
                 <td>${employee.employeeId}</td>
                 <td>${employee.title}</td>
-                <td>`+ convertToCurrency.format(employee.annualSalary) +`</td>
+                <td>${convertToCurrency.format(employee.annualSalary)}</td>
                 <td class="deleteEmployee"><button id="${employee.employeeId}">Delete</button></td>
             </tr>
         `)
