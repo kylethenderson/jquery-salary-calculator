@@ -86,7 +86,7 @@ function updateEmployeeTable() {
                 <td>${employee.lastName}</td>
                 <td>${employee.employeeId}</td>
                 <td>${employee.title}</td>
-                <td>$ ${employee.annualSalary}</td>
+                <td>`+ formatter.format(employee.annualSalary) +`</td>
                 <td class="deleteEmployee"><button id="${employee.employeeId}">Delete</button></td>
             </tr>
         `)
@@ -98,11 +98,8 @@ function updateTotalMonthly() {
     let totalSalary = 0;
     for ( let employee of employees ) {
         totalSalary += employee.annualSalary;
-        console.log(totalSalary);
     }
     totalMonthly = totalSalary/12;
-    console.log(totalMonthly);
-    console.log(typeof totalMonthly);
     if ( totalMonthly > 20000 ) {
         $('.totalDisplayWrapper h2').css('background-color', '#b10021');
         $('.totalDisplayWrapper h2').css('color', '#ffffff');
@@ -111,7 +108,7 @@ function updateTotalMonthly() {
         $('.totalDisplayWrapper h2').css('color', '#000000');
     }
     // format totalMonthly to currency. 
-    $('#totalMonthly').html(totalMonthly);
+    $('#totalMonthly').html( formatter.format(totalMonthly));
 
 }
 
@@ -129,3 +126,10 @@ class Employee {
         this.annualSalary = Number(salary);
     }
 }
+
+// format numbers to currency
+const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+  })
