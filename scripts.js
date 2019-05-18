@@ -94,7 +94,7 @@ function updateEmployeeTable() {
     updateTotalMonthly();
 }
 
-function updateTotalMonthly() {
+function updateTotalMonthly() { 
     let totalSalary = 0;
     for ( let employee of employees ) {
         totalSalary += employee.annualSalary;
