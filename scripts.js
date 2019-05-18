@@ -113,7 +113,12 @@ function updateTotalMonthly() {
 }
 
 function deleteEmployee() {
-    employees = employees.filter( employee => employee.employeeId != this.id );
+    for ( let i = 0; i<employees.length; i++ ) {
+        if ( employees[i].employeeId === this.id ) {
+            employees.splice(i, 1);
+        }
+    }
+    // employees = employees.filter( employee => employee.employeeId != this.id );
     updateEmployeeTable();
 }
 
