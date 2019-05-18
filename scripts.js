@@ -41,12 +41,13 @@ function addEmployee() {
     let availableId = true;
 
     // get the data from the inputs
-    let first = $('#firstName').val();
-    let last = $('#lastName').val();
-    let id = $('#employeeId').val();
-    let title = $('#title').val();
-    let salary = $('#annualSalary').val();
+    const first = $('#firstName').val();
+    const last = $('#lastName').val();
+    const id = $('#employeeId').val();
+    const title = $('#title').val();
+    const salary = $('#annualSalary').val();
 
+    // check all id's to make sure its available
     for (let employee of employees) {
         if (employee.employeeId === id) {
             availableId = false;
