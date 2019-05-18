@@ -35,32 +35,31 @@ function domReady() {
 
 
 function addEmployee() {
-    $('input').removeClass('error-border');
+    let requiredInputs = $('.required');
+    $(requiredInputs).removeClass('error-border');
     
-    let firstName = $('#firstName').val()
-    let lastName = $('#lastName').val()
-    let employeeId = $('#employeeId').val()
-    let title = $('#title').val()
-    let annualSalary = Number($('#annualSalary').val())
+    let first = $('#firstName').val();
+    let last = $('#lastName').val();
+    let id = $('#employeeId').val();
+    let title = $('#title').val();
+    let salary = $('#annualSalary').val();
 
-    if ( firstName.length && lastName.length && employeeId.length && title.length && annualSalary.length ) {
-        let newEmployee = {
-            firstName: firstName,
-            lastName: lastName,
-            employeeId: employeeId,
-            title: title,
-            annualSalary: annualSalary
-        }
+    if ( first.length && last.length && id.length && title.length && salary.length ) {
+        let newEmployee = new Employee(first, last, id, title, salary);
         employees.push(newEmployee);
+        console.log(newEmployee);
         $('input').val('')
         updateEmployeeTable();
     } // if all inputs have values
     else {
-        let inputs = $('input');
-        for ( input of inputs ) {
-            console.log(input);
-        }
-    }
+        for ( input of requiredInputs ) {
+          // add error border if input is empty
+          if ( input.value.length === 0 ) {
+            $('#'+input.id).addClass('error-border');
+          } // end if to check each input for data
+        } // end for to check each input for !empty
+        $('#errorMsg').html("Please fill out required fields."); // add error message if an input is missing
+      }
 
 } // end of addEmployee
 
@@ -110,4 +109,14 @@ function updateTotalMonthly() {
 function deleteEmployee() {
     employees = employees.filter( employee => employee.employeeId != this.id );
     updateEmployeeTable();
+}
+
+class Employee {
+    constructor ( first, last, id, title, salary) {
+        this.firstName = first;
+        this.lastName = last;
+        this.employeeId = id;
+        this.title = title;
+        this.annualSalary = Number(salary);
+    }
 }
