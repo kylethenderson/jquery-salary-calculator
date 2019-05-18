@@ -27,7 +27,6 @@ let employees = [
 $(document).ready(domReady);
 
 function domReady() {
-
     console.log('JQ');
     updateEmployeeTable();
     $('#addEmployee').on('click', addEmployee);
@@ -40,7 +39,7 @@ function addEmployee() {
     $('#errorMsg').html(''); // remove error msg
     $(requiredInputs).removeClass('error-border'); // remove all error borders
     let availableId = true;
-    
+
     // get the data from the inputs
     let first = $('#firstName').val();
     let last = $('#lastName').val();
@@ -48,13 +47,13 @@ function addEmployee() {
     let title = $('#title').val();
     let salary = $('#annualSalary').val();
 
-    for ( let employee of employees ) {
-        if ( employee.employeeId === id ) {
+    for (let employee of employees) {
+        if (employee.employeeId === id) {
             availableId = false;
         }
     }// end loop to make sure employee id is available.
 
-    if ( first.length && last.length && id.length && title.length && salary.length && availableId ) {
+    if (first.length && last.length && id.length && title.length && salary.length && availableId) {
         // if all have values, create a new object with the data
         let newEmployee = createEmployee(first, last, id, title, Number(salary));
         employees.push(newEmployee);
@@ -64,19 +63,19 @@ function addEmployee() {
     } // end if all inputs have values
     else {
         // if there's a missing input
-        for ( input of requiredInputs ) {
-          // add error border for each missing input
-          if ( input.value.length === 0 ) {
-            $('#'+input.id).addClass('error-border');
-          } // end if to check each input for data
+        for (input of requiredInputs) {
+            // add error border for each missing input
+            if (input.value.length === 0) {
+                $('#' + input.id).addClass('error-border');
+            } // end if to check each input for data
         } // end for to check each input for !empty
         $('#errorMsg').html("*Please fill out required fields and ensure ID already isn't in use."); // add error message if an input is missing
-      }
+    }
 
 } // end of addEmployee
 
 function checkForEnter() {
-    if ( event.which === 13 ) {
+    if (event.which === 13) {
         addEmployee();
     } // end call addEmployee if keypress is 'enter'
 } // end checkForEnter
@@ -104,25 +103,25 @@ function updateEmployeeTable() {
     updateTotalMonthly();
 } // end updateEmployeeTable
 
-function updateTotalMonthly() { 
+function updateTotalMonthly() {
     let totalSalary = 0;
-    for ( let employee of employees ) {
+    for (let employee of employees) {
         totalSalary += employee.annualSalary;
     }
-    totalMonthly = totalSalary/12;
-    if ( totalMonthly > 20000 ) {
+    totalMonthly = totalSalary / 12;
+    if (totalMonthly > 20000) {
         $('.totalDisplayWrapper h2').addClass('over-budget');
     } else {
         $('.totalDisplayWrapper h2').removeClass('over-budget');
     }
     // format totalMonthly to currency. 
-    $('#totalMonthly').html( convertToCurrency.format(totalMonthly));
+    $('#totalMonthly').html(convertToCurrency.format(totalMonthly));
 
 }// end updateTotalMonthly
 
 function deleteEmployee() {
-    for ( let i = 0; i<employees.length; i++ ) {
-        if ( employees[i].employeeId === this.id ) {
+    for (let i = 0; i < employees.length; i++) {
+        if (employees[i].employeeId === this.id) {
             employees.splice(i, 1);
         }
     }
@@ -130,7 +129,7 @@ function deleteEmployee() {
     updateEmployeeTable();
 }// end deleteEmployee
 
-function createEmployee( first, last, id, title, salary) {
+function createEmployee(first, last, id, title, salary) {
     let newEmployee = {
         firstName: first,
         lastName: last,
@@ -146,4 +145,4 @@ const convertToCurrency = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2
-  })
+})
