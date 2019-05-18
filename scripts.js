@@ -27,6 +27,7 @@ let employees = [
 $(document).ready(domReady);
 
 function domReady() {
+
     console.log('JQ');
     updateEmployeeTable();
     $('#addEmployee').on('click', addEmployee);
@@ -35,8 +36,10 @@ function domReady() {
 } // end of domReady
 
 function addEmployee() {
-    let requiredInputs = $('.required');
-    $(requiredInputs).removeClass('error-border');
+    let requiredInputs = $('.required'); // get all required inputs
+    $('#errorMsg').html(''); // remove error msg
+    $(requiredInputs).removeClass('error-border'); // remove all error borders
+    let availableId = true;
     
     // get the data from the inputs
     let first = $('#firstName').val();
@@ -45,7 +48,13 @@ function addEmployee() {
     let title = $('#title').val();
     let salary = $('#annualSalary').val();
 
-    if ( first.length && last.length && id.length && title.length && salary.length ) {
+    for ( let employee of employees ) {
+        if ( employee.employeeId === id ) {
+            availableId = false;
+        }
+    }// end loop to make sure employee id isn't used already.
+
+    if ( first.length && last.length && id.length && title.length && salary.length && availableId ) {
         // if all have values, create a new object with the data
         let newEmployee = createEmployee(first, last, id, title, Number(salary));
         employees.push(newEmployee);
@@ -61,7 +70,7 @@ function addEmployee() {
             $('#'+input.id).addClass('error-border');
           } // end if to check each input for data
         } // end for to check each input for !empty
-        $('#errorMsg').html("*Please fill out required fields."); // add error message if an input is missing
+        $('#errorMsg').html("*Please fill out required fields and ensure ID already isn't in use."); // add error message if an input is missing
       }
 
 } // end of addEmployee
