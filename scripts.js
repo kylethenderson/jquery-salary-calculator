@@ -30,6 +30,7 @@ function domReady() {
     console.log('JQ');
     updateEmployeeTable();
     $('#addEmployee').on('click', addEmployee);
+    $('input').on('keypress', checkForEnter);
     $('#employeeTableBody').on('click', '.deleteEmployee button', deleteEmployee);
 } // end of domReady
 
@@ -38,6 +39,7 @@ function addEmployee() {
     let requiredInputs = $('.required');
     $(requiredInputs).removeClass('error-border');
     
+    // get the data from tne inputs
     let first = $('#firstName').val();
     let last = $('#lastName').val();
     let id = $('#employeeId').val();
@@ -45,15 +47,16 @@ function addEmployee() {
     let salary = $('#annualSalary').val();
 
     if ( first.length && last.length && id.length && title.length && salary.length ) {
+        // if there are values, create a new object with the data
         let newEmployee = new Employee(first, last, id, title, salary);
         employees.push(newEmployee);
-        console.log(newEmployee);
-        $('input').val('')
-        updateEmployeeTable();
-    } // if all inputs have values
+        $('input').val('') // clear the inputs
+        updateEmployeeTable(); // update the table
+    } // end if all inputs have values
     else {
+        // if there's a missing input
         for ( input of requiredInputs ) {
-          // add error border if input is empty
+          // add error border for each missing input
           if ( input.value.length === 0 ) {
             $('#'+input.id).addClass('error-border');
           } // end if to check each input for data
@@ -62,6 +65,12 @@ function addEmployee() {
       }
 
 } // end of addEmployee
+
+function checkForEnter() {
+    if ( event.which === 13 ) {
+        addEmployee();
+    }
+}
 
 function updateEmployeeTable() {
     $('#employeeTableBody').empty();
