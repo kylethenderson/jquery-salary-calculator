@@ -103,6 +103,7 @@ function updateTotalMonthly() {
     if ( totalMonthly > 20000 ) {
         $('.totalDisplayWrapper h2').css('background-color', '#b10021');
         $('.totalDisplayWrapper h2').css('color', '#ffffff');
+        $('.totalDisplayWrapper h2').css('border-color', '#b10021');
     } else {
         $('.totalDisplayWrapper h2').css('background-color', '#ffffff');
         $('.totalDisplayWrapper h2').css('color', '#000000');
