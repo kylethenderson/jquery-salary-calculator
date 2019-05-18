@@ -1,28 +1,6 @@
 console.log('JS');
 
-let employees = [
-    {
-        firstName: 'Jen',
-        lastName: 'Barber',
-        employeeId: '4521',
-        title: 'Team Lead',
-        annualSalary: 80000
-    },
-    {
-        firstName: 'Maurice',
-        lastName: 'Moss',
-        employeeId: '8724',
-        title: 'Support Team',
-        annualSalary: 58000
-    },
-    {
-        firstName: 'Roy',
-        lastName: 'Smith',
-        employeeId: '9623',
-        title: 'Quality Assurance',
-        annualSalary: 48000
-    }
-];
+let employees = [];
 
 $(document).ready(domReady);
 
