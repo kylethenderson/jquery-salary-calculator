@@ -11,7 +11,7 @@ header h1 {
     text-align: center;
     margin: 0;
     color: white;
-    padding: 40px 0px;
+    padding: 25px 0px;
     text-transform: uppercase;
 }
 #inputWrapper {
@@ -84,7 +84,7 @@ tr:hover {
     background-color: rgba(34, 34, 34, .225);
 }
 td {
-    padding: 10px 5px;
+    padding: 5px 5px;
 }
 #emptyRow {
     background-color: rgba(57, 76, 107, .5);
@@ -93,12 +93,12 @@ td {
     text-align:center;
 }
 .deleteEmployee button {
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 5px;
     text-transform: uppercase;
     background-color: rgba(177, 0, 33, .75);
     color: white;
-    font-weight: 700;
+    font-weight: 500;
 }
 .totalDisplayWrapper {
     text-align: right;
@@ -107,6 +107,7 @@ td {
 }
 .totalDisplayWrapper h2 {
     display: inline-block;
+    font-weight: 400;
     padding: 20px 40px;
     margin: 25px 0px;
     border-radius: 5px;
