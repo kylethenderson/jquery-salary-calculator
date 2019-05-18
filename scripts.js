@@ -52,7 +52,7 @@ function addEmployee() {
         if ( employee.employeeId === id ) {
             availableId = false;
         }
-    }// end loop to make sure employee id isn't used already.
+    }// end loop to make sure employee id is available.
 
     if ( first.length && last.length && id.length && title.length && salary.length && availableId ) {
         // if all have values, create a new object with the data
@@ -88,6 +88,7 @@ function updateEmployeeTable() {
             <td colspan="6" id="emptyRow">&nbsp</td><!-- Empty row -->
         </tr>
     `)
+    // loop through array and append new table row with data for each employee
     for (let employee of employees) {
         $('#employeeTableBody').prepend(`
             <tr>
@@ -99,9 +100,9 @@ function updateEmployeeTable() {
                 <td class="deleteEmployee"><button id="${employee.employeeId}">Delete</button></td>
             </tr>
         `)
-    }
+    }// end append row/data to table
     updateTotalMonthly();
-}
+} // end updateEmployeeTable
 
 function updateTotalMonthly() { 
     let totalSalary = 0;
@@ -117,7 +118,7 @@ function updateTotalMonthly() {
     // format totalMonthly to currency. 
     $('#totalMonthly').html( convertToCurrency.format(totalMonthly));
 
-}
+}// end updateTotalMonthly
 
 function deleteEmployee() {
     for ( let i = 0; i<employees.length; i++ ) {
@@ -127,7 +128,7 @@ function deleteEmployee() {
     }
     // employees = employees.filter( employee => employee.employeeId != this.id );
     updateEmployeeTable();
-}
+}// end deleteEmployee
 
 function createEmployee( first, last, id, title, salary) {
     let newEmployee = {
@@ -138,7 +139,7 @@ function createEmployee( first, last, id, title, salary) {
         annualSalary: salary
     }
     return newEmployee;
-}
+}//createEmployee
 
 // format numbers to currency
 const convertToCurrency = new Intl.NumberFormat('en-US', {
