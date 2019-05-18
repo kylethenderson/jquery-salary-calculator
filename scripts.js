@@ -48,7 +48,7 @@ function addEmployee() {
 
     if ( first.length && last.length && id.length && title.length && salary.length ) {
         // if there are values, create a new object with the data
-        let newEmployee = new Employee(first, last, id, title, salary);
+        let newEmployee = createEmployee(first, last, id, title, Number(salary));
         employees.push(newEmployee);
         $('input').val('') // clear the inputs
         updateEmployeeTable(); // update the table
@@ -86,7 +86,7 @@ function updateEmployeeTable() {
                 <td>${employee.lastName}</td>
                 <td>${employee.employeeId}</td>
                 <td>${employee.title}</td>
-                <td>`+ formatter.format(employee.annualSalary) +`</td>
+                <td>`+ convertToCurrency.format(employee.annualSalary) +`</td>
                 <td class="deleteEmployee"><button id="${employee.employeeId}">Delete</button></td>
             </tr>
         `)
@@ -107,9 +107,10 @@ function updateTotalMonthly() {
     } else {
         $('.totalDisplayWrapper h2').css('background-color', '#ffffff');
         $('.totalDisplayWrapper h2').css('color', '#000000');
+        $('.totalDisplayWrapper h2').css('border-color', '#000000');
     }
     // format totalMonthly to currency. 
-    $('#totalMonthly').html( formatter.format(totalMonthly));
+    $('#totalMonthly').html( convertToCurrency.format(totalMonthly));
 
 }
 
@@ -123,18 +124,19 @@ function deleteEmployee() {
     updateEmployeeTable();
 }
 
-class Employee {
-    constructor ( first, last, id, title, salary) {
-        this.firstName = first;
-        this.lastName = last;
-        this.employeeId = id;
-        this.title = title;
-        this.annualSalary = Number(salary);
+function createEmployee( first, last, id, title, salary) {
+    let newEmployee = {
+        firstName: first,
+        lastName: last,
+        employeeId: id,
+        title: title,
+        annualSalary: salary
     }
+    return newEmployee;
 }
 
 // format numbers to currency
-const formatter = new Intl.NumberFormat('en-US', {
+const convertToCurrency = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
     minimumFractionDigits: 2
