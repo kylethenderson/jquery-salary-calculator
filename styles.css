@@ -113,4 +113,9 @@ td {
     border-radius: 5px;
     border: 1px solid black;
 }
+.over-budget {
+    background-color: #b10021;
+    color: white;
+    border-color: #b10021;
+}
 

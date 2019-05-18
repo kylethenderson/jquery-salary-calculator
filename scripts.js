@@ -12,7 +12,6 @@ function domReady() {
     $('#employeeTableBody').on('click', '.deleteEmployee button', deleteEmployee);
 } // end of domReady
 
-
 function addEmployee() {
     let requiredInputs = $('.required');
     $(requiredInputs).removeClass('error-border');
@@ -30,6 +29,7 @@ function addEmployee() {
         employees.push(newEmployee);
         $('input').val('') // clear the inputs
         updateEmployeeTable(); // update the table
+        $('#firstName').focus();
     } // end if all inputs have values
     else {
         // if there's a missing input
@@ -79,13 +79,9 @@ function updateTotalMonthly() {
     }
     totalMonthly = totalSalary/12;
     if ( totalMonthly > 20000 ) {
-        $('.totalDisplayWrapper h2').css('background-color', '#b10021');
-        $('.totalDisplayWrapper h2').css('color', '#ffffff');
-        $('.totalDisplayWrapper h2').css('border-color', '#b10021');
+        $('.totalDisplayWrapper h2').addClass('over-budget');
     } else {
-        $('.totalDisplayWrapper h2').css('background-color', '#ffffff');
-        $('.totalDisplayWrapper h2').css('color', '#000000');
-        $('.totalDisplayWrapper h2').css('border-color', '#000000');
+        $('.totalDisplayWrapper h2').removeClass('over-budget');
     }
     // format totalMonthly to currency. 
     $('#totalMonthly').html( convertToCurrency.format(totalMonthly));
