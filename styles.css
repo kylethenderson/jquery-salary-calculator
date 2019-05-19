@@ -10,18 +10,18 @@ header{
     text-align: center;
 }
 header img {
-    height: 60px;
+    height: 75px;
     position: relative;
-    top: 5px;
+    top: 15px;
 }
 header span {
     font-weight: 300;
     color: white;
-    font-size: 30px;
+    font-size: 26px;
     letter-spacing: 2px;
-    margin-right: 10px;
+    margin-right: 5px;
     position: relative;
-    left: -5px; 
+    left: -10px; 
     text-transform: uppercase;
 }
 header h1 {
@@ -30,8 +30,8 @@ header h1 {
     text-align: center;
     margin: 0;
     color: white;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 30px;
+    padding-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 40px;
@@ -43,6 +43,7 @@ header h1 {
 #inputWrapper h2 {
     text-transform: uppercase;
     font-weight: 400;
+    margin-bottom: 10px;
 }
 input {
     font-size: 16px;
@@ -54,6 +55,7 @@ input {
     box-sizing: border-box;
     float: left;
     margin: 0px 5px;
+    font-family: 'Marvel', sans-serif;
 }
 input.disabled {
     background-color: rgba(34, 34, 34, .25);
@@ -64,17 +66,18 @@ input.disabled {
 }
 #buttonWrapper {
     padding: 0;
-    text-align: left;
+    text-align: right;
 }
 #addAvenger {
     padding: 10px 0px;
-    border-radius: 5px;
+    border-radius: 100px;
     background-color: rgba(0,153,31, 1);
     color: white;
-    font-size: 16px;
+    font-size: 20px;
     width: calc(85vw / 5);
-    margin: 20px 5px;
+    margin: 20px 5px 10px 5px;
     cursor: pointer;
+    font-family: 'Marvel', sans-serif;
 }
 #addAvenger.disabled {
     background-color: rgba(34, 34, 34, .25);
@@ -90,8 +93,11 @@ input.disabled {
     font-weight: 300;
     color: red;
 }
+#mainWrapper {
+    max-width: 90vw;
+    margin: 0 auto;
+}
 #mainWrapper h2 {
-    width: 90%;
     margin: 0px auto 10px auto;
     font-size: 28px;
     font-weight: 400;
@@ -107,20 +113,22 @@ table, th, td {
 th {
     padding: 20px 5px;
     min-width: calc((100vw - 200px) / 6);
-    background-color: rgba(153,153,153, .5);
+    background-color: rgba(43, 55, 132, .9);
+    color: white;
     text-align: left;
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 tbody tr:hover {
-    background-color: rgba(38, 110, 246, .1);
+    background-color: rgba(68, 123, 190, .175);
 }
 td {
     padding: 5px 5px;
+    font-size: 18px;
 }
 tfoot {
-    background-color: rgba(153,153,153, .5);
+    background-color: rgba(43, 55, 132, .9);
 }
 tfoot td {
     height: 25px;
@@ -129,12 +137,14 @@ tfoot td {
     text-align:center;
 }
 .delete-avenger button {
-    padding: 8px 16px;
-    border-radius: 5px;
+    min-width: 125px;
+    min-height: 32px;
+    padding: 8px 0px;
+    border-radius: calc(32px / 2);
     text-transform: uppercase;
-    background-color: rgba(237, 29, 36, .9);
+    background-color: rgba(177, 19, 19, 1);
     color: white;
-    font-weight: 5  00;
+    font-weight: 400;
 }
 .totalDisplayWrapper {
     text-align: right;
@@ -146,13 +156,13 @@ tfoot td {
     font-weight: 400;
     padding: 20px 40px;
     margin: 25px 0px 75px 0px;
-    border-radius: 5px;
+    border-radius: 50px;
     border: 1px solid black;
 }
-.over-budget {
+.totalDisplayWrapper h2.over-budget {
     background-color: #b10021;
     color: white;
-    border-color: #b10021;
+    border: 1px solid #b10021;
 }
 footer {
     background-color: rgba(0, 0, 66, .9);
@@ -167,4 +177,5 @@ footer h6 {
     padding: 15px;
     font-weight: 300;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }

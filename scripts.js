@@ -1,4 +1,4 @@
-console.log('JS');
+// console.log('JS');
 
 let avengers = [
     {
@@ -34,7 +34,7 @@ let avengers = [
 $(document).ready(domReady);
 
 function domReady() {
-    console.log('JQ');
+    // console.log('JQ');
     updateAvengerTable();
     $('#addAvenger').on('click', addAvenger);
     $('input').on('keypress', checkForEnter);
@@ -97,7 +97,7 @@ function updateAvengerTable() {
                 <td>${avenger.avengerId}</td>
                 <td>${avenger.title}</td>
                 <td>${convertToCurrency.format(avenger.annualSalary)}</td>
-                <td class="delete-avenger"><button id="${avenger.avengerId}">Delete</button></td>
+                <td class="delete-avenger"><button id="${avenger.avengerId}">Fire ${avenger.firstName}</button></td>
             </tr>
         `)
     }// end append row/data to table
@@ -113,10 +113,11 @@ function updateTotalMonthly() {
     if (totalMonthly > 20000) {
         $('.totalDisplayWrapper h2').addClass('over-budget'); // create red background for monthly salaries
         $('input, #addAvenger').attr({ disabled: true }).addClass('disabled'); //disable inputs and add disable class
-        $('#errorMsg').html('*Monthly salary expense is too high. Someone has to be let go.')
+        $('#errorMsg').html('*Monthly salary expense is too high. Remove an Avenger from the team.'); // add over budget error message
     } else {
         $('.totalDisplayWrapper h2').removeClass('over-budget'); // remove red background for monthly salaries
         $('input, #addAvenger').attr({ disabled: false }).removeClass('disabled'); //enable inputs and remove disabled class
+        $('#errorMsg').html(''); //remove over budget error message
     }
     // format totalMonthly to currency. 
     $('#totalMonthly').html(convertToCurrency.format(totalMonthly));
@@ -126,7 +127,10 @@ function updateTotalMonthly() {
 function deleteAvenger() {
     for (let i = 0; i < avengers.length; i++) {
         if (avengers[i].avengerId === this.id) {
-            avengers.splice(i, 1);
+            let confirmation = confirm(`Are you sure you want to fire ${avengers[i].title} from the Avengers?`);
+            if (confirmation) {
+                avengers.splice(i, 1);
+            }
         }
     }
     updateAvengerTable();
