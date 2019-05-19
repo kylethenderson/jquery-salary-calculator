@@ -81,6 +81,17 @@ function addAvenger() {
 
 } // end of addAvenger
 
+function createAvenger(first, last, id, title, salary) {
+    let newAvenger = {
+        firstName: first,
+        lastName: last,
+        avengerId: id,
+        title: title,
+        annualSalary: salary
+    }
+    return newAvenger;
+}//createAvenger
+
 function checkForEnter() {
     if (event.which === 13) {
         addAvenger();
@@ -135,17 +146,6 @@ function deleteAvenger() {
     }
     updateAvengerTable();
 }// end deleteAvenger
-
-function createAvenger(first, last, id, title, salary) {
-    let newAvenger = {
-        firstName: first,
-        lastName: last,
-        avengerId: id,
-        title: title,
-        annualSalary: salary
-    }
-    return newAvenger;
-}//createAvenger
 
 // format numbers to currency
 const convertToCurrency = new Intl.NumberFormat('en-US', {
