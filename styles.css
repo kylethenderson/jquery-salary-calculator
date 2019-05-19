@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Marvel', sans-serif;
+    position: relative;
     min-height: 100vh;
 }
 header{
@@ -134,7 +135,7 @@ tfoot td {
     display: inline-block;
     font-weight: 400;
     padding: 20px 40px;
-    margin: 25px 0px 50px 0px;
+    margin: 25px 0px 75px 0px;
     border-radius: 5px;
     border: 1px solid black;
 }
@@ -147,7 +148,7 @@ footer {
     background-color: rgba(0, 0, 66, .9);
     color: white;
     text-align: center;
-    position: fixed;
+    position: absolute;
     bottom: 0;
     width: 100vw;
 }
