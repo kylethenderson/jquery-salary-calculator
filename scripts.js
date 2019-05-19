@@ -82,12 +82,6 @@ function checkForEnter() {
 
 function updateEmployeeTable() {
     $('#employeeTableBody').empty();
-    // $('#employeeTableBody').append(`
-    //     <tr>
-    //         <td colspan="6" id="emptyRow">&nbsp</td><!-- Empty row -->
-    //     </tr>
-    // `)
-    // // loop through array and append new table row with data for each employee
     for (let employee of employees) {
         $('#employeeTableBody').prepend(`
             <tr>
@@ -110,9 +104,11 @@ function updateTotalMonthly() {
     }
     totalMonthly = totalSalary / 12;
     if (totalMonthly > 20000) {
-        $('.totalDisplayWrapper h2').addClass('over-budget');
+        $('.totalDisplayWrapper h2').addClass('over-budget'); // create red background for monthly salaries
+        $('input, #addEmployee').attr('disabled', true).addClass('disabled'); //disable inputs and add disable class
     } else {
-        $('.totalDisplayWrapper h2').removeClass('over-budget');
+        $('.totalDisplayWrapper h2').removeClass('over-budget'); // remove red background for monthly salaries
+        $('input, #addEmployee').attr('disabled', false).removeClass('disabled'); //enable inputs and remove disabled class
     }
     // format totalMonthly to currency. 
     $('#totalMonthly').html(convertToCurrency.format(totalMonthly));
