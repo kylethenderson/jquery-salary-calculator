@@ -55,6 +55,10 @@ input {
     float: left;
     margin: 0px 5px;
 }
+input.disabled {
+    background-color: rgba(34, 34, 34, .25);
+    cursor: not-allowed;
+}
 .error-border {
     border: 1px solid red;
 }
@@ -71,6 +75,12 @@ input {
     width: calc(85vw / 5);
     margin: 20px 5px;
     cursor: pointer;
+}
+#addEmployee.disabled {
+    background-color: rgba(34, 34, 34, .25);
+    cursor: not-allowed;
+    color: rgba(34, 34, 34, .5);
+    border: 1px solid rgba(34, 34, 34, .5);
 }
 #errorMsg {
     margin-left: 25px;

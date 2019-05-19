@@ -6,21 +6,21 @@ let employees = [
         lastName: 'Rodgers',
         employeeId: '1',
         title: 'Captain America',
-        annualSalary: 50000
+        annualSalary: 25000
     },
     {
         firstName: 'Tony',
         lastName: 'Stark',
         employeeId: '3',
         title: 'Iron Man',
-        annualSalary: 75000
+        annualSalary: 550000
     },
     {
         firstName: 'Carol',
         lastName: 'Danvers',
         employeeId: '2',
         title: 'Captain Marvel',
-        annualSalary: 50000
+        annualSalary: 25000
     }
 ];
 
@@ -105,10 +105,11 @@ function updateTotalMonthly() {
     totalMonthly = totalSalary / 12;
     if (totalMonthly > 20000) {
         $('.totalDisplayWrapper h2').addClass('over-budget'); // create red background for monthly salaries
-        $('input, #addEmployee').attr('disabled', true).addClass('disabled'); //disable inputs and add disable class
+        $('input, #addEmployee').attr({disabled: true}).addClass('disabled'); //disable inputs and add disable class
+        $('#errorMsg').html('*Monthly salary expense is too high. Someone has to be let go.')
     } else {
         $('.totalDisplayWrapper h2').removeClass('over-budget'); // remove red background for monthly salaries
-        $('input, #addEmployee').attr('disabled', false).removeClass('disabled'); //enable inputs and remove disabled class
+        $('input, #addEmployee').attr({disabled: false}).removeClass('disabled'); //enable inputs and remove disabled class
     }
     // format totalMonthly to currency. 
     $('#totalMonthly').html(convertToCurrency.format(totalMonthly));
