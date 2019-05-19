@@ -66,7 +66,7 @@ input.disabled {
     padding: 0;
     text-align: left;
 }
-#addEmployee {
+#addAvenger {
     padding: 10px 0px;
     border-radius: 5px;
     background-color: rgba(0,153,31, 1);
@@ -76,7 +76,7 @@ input.disabled {
     margin: 20px 5px;
     cursor: pointer;
 }
-#addEmployee.disabled {
+#addAvenger.disabled {
     background-color: rgba(34, 34, 34, .25);
     cursor: not-allowed;
     color: rgba(34, 34, 34, .5);
@@ -125,10 +125,10 @@ tfoot {
 tfoot td {
     height: 25px;
 }
-.deleteEmployee {
+.delete-avenger {
     text-align:center;
 }
-.deleteEmployee button {
+.delete-avenger button {
     padding: 8px 16px;
     border-radius: 5px;
     text-transform: uppercase;
