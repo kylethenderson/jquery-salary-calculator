@@ -38,7 +38,7 @@ function addEmployee() {
     let requiredInputs = $('.required'); // get all required inputs
     $('#errorMsg').html(''); // remove error msg
     $(requiredInputs).removeClass('error-border'); // remove all error borders
-    let availableId = true;
+    availableId = true;
 
     // get the data from the inputs
     const first = $('#firstName').val();
@@ -47,20 +47,24 @@ function addEmployee() {
     const title = $('#title').val();
     const salary = $('#annualSalary').val();
 
-    // check all id's to make sure its available
-    for (let employee of employees) {
-        if (employee.employeeId === id) {
-            availableId = false;
+    if (first.length && last.length && id.length && title.length && salary.length) {
+        // if all have values, make sure id is available
+        for (let employee of employees) {
+            if (employee.employeeId === id) {
+                availableId = false;
+            } // end 
+        }// end loop to make sure employee id is available.
+        if (availableId) {
+            let newEmployee = createEmployee(first, last, id, title, Number(salary));
+            employees.push(newEmployee);
+            $('input').val('') // clear the inputs
+            updateEmployeeTable(); // update the table
+            $('#firstName').focus(); // move cursor back to first input
         }
-    }// end loop to make sure employee id is available.
-
-    if (first.length && last.length && id.length && title.length && salary.length && availableId) {
-        // if all have values, create a new object with the data
-        let newEmployee = createEmployee(first, last, id, title, Number(salary));
-        employees.push(newEmployee);
-        $('input').val('') // clear the inputs
-        updateEmployeeTable(); // update the table
-        $('#firstName').focus(); // move cursor back to first input
+        else {
+            $('#errorMsg').html('*ID is already in use, please use another.');
+            $('#employeeId').addClass('error-border');
+        }
     } // end if all inputs have values
     else {
         // if there's a missing input
@@ -70,7 +74,7 @@ function addEmployee() {
                 $('#' + input.id).addClass('error-border');
             } // end if to check each input for data
         } // end for to check each input for !empty
-        $('#errorMsg').html("*Please fill out required fields and ensure ID already isn't in use."); // add error message if an input is missing
+        $('#errorMsg').html("*Please fill out required fields."); // add error message if an input is missing
     }
 
 } // end of addEmployee
