@@ -145,6 +145,7 @@ tfoot td {
     background-color: rgba(177, 19, 19, 1);
     color: white;
     font-weight: 400;
+    cursor: pointer;
 }
 .totalDisplayWrapper {
     text-align: right;

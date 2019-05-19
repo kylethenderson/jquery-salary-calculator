@@ -9,18 +9,18 @@ let avengers = [
         annualSalary: 25000
     },
     {
-        firstName: 'Tony',
-        lastName: 'Stark',
-        avengerId: '3',
-        title: 'Iron Man',
-        annualSalary: 30000
-    },
-    {
         firstName: 'Carol',
         lastName: 'Danvers',
         avengerId: '2',
         title: 'Captain Marvel',
         annualSalary: 25000
+    },
+    {
+        firstName: 'Tony',
+        lastName: 'Stark',
+        avengerId: '3',
+        title: 'Iron Man',
+        annualSalary: 30000
     },
     {
         firstName: 'Thor',
