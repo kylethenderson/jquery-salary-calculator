@@ -36,6 +36,7 @@ $(document).ready(domReady);
 function domReady() {
     // console.log('JQ');
     updateAvengerTable();
+    $('#firstName').focus(); // move cursor and focus to first input
     $('#addAvenger').on('click', addAvenger);
     $('input').on('keypress', checkForEnter);
     $('#avengerTableBody').on('click', '.delete-avenger button', deleteAvenger);

@@ -57,6 +57,11 @@ input {
     margin: 0px 5px;
     font-family: 'Marvel', sans-serif;
 }
+input:focus {
+    box-shadow: 0 0 8px rgba(251, 202, 3, 1);
+    border-color: rgba(251, 202, 3, 1);
+    outline: none;
+}
 input.disabled {
     background-color: rgba(34, 34, 34, .25);
     cursor: not-allowed;
@@ -137,7 +142,7 @@ tfoot td {
     text-align:center;
 }
 .delete-avenger button {
-    min-width: 125px;
+    min-width: 110px;
     min-height: 32px;
     padding: 8px 0px;
     border-radius: calc(32px / 2);
@@ -157,7 +162,7 @@ tfoot td {
     font-weight: 400;
     padding: 20px 40px;
     margin: 25px 0px 75px 0px;
-    border-radius: 50px;
+    border-radius: 20px;
     border: 1px solid black;
 }
 .totalDisplayWrapper h2.over-budget {
