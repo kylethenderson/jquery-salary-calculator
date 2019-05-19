@@ -35,10 +35,9 @@ function domReady() {
 } // end of domReady
 
 function addEmployee() {
-    let requiredInputs = $('.required'); // get all required inputs
+    const requiredInputs = $('.required'); // get all required input elements
     $('#errorMsg').html(''); // remove error msg
     $(requiredInputs).removeClass('error-border'); // remove all error borders
-    availableId = true;
 
     // get the data from the inputs
     const first = $('#firstName').val();
@@ -49,12 +48,8 @@ function addEmployee() {
 
     if (first.length && last.length && id.length && title.length && salary.length) {
         // if all have values, make sure id is available
-        for (let employee of employees) {
-            if (employee.employeeId === id) {
-                availableId = false;
-            } // end 
-        }// end loop to make sure employee id is available.
-        if (availableId) {
+        const availableId = employees.filter( x => x.employeeId === id);
+        if (availableId.length === 0) {
             let newEmployee = createEmployee(first, last, id, title, Number(salary));
             employees.push(newEmployee);
             $('input').val('') // clear the inputs
@@ -87,12 +82,12 @@ function checkForEnter() {
 
 function updateEmployeeTable() {
     $('#employeeTableBody').empty();
-    $('#employeeTableBody').append(`
-        <tr>
-            <td colspan="6" id="emptyRow">&nbsp</td><!-- Empty row -->
-        </tr>
-    `)
-    // loop through array and append new table row with data for each employee
+    // $('#employeeTableBody').append(`
+    //     <tr>
+    //         <td colspan="6" id="emptyRow">&nbsp</td><!-- Empty row -->
+    //     </tr>
+    // `)
+    // // loop through array and append new table row with data for each employee
     for (let employee of employees) {
         $('#employeeTableBody').prepend(`
             <tr>
