@@ -42,6 +42,7 @@ function domReady() {
     $('#avengerTableBody').on('click', '.delete-avenger button', deleteAvenger); // bind click event to delete-avenger button
 } // end of domReady
 
+// refactor this function to split into multiple functions and simplify each
 function addAvenger() {
     const requiredInputs = $('.required'); // get all required input elements
     $('#errorMsg').html(''); // remove error msg
