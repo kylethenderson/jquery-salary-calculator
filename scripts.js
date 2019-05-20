@@ -35,11 +35,11 @@ $(document).ready(domReady);
 
 function domReady() {
     // console.log('JQ');
-    updateAvengerTable();
+    updateAvengerTable(); // fill table with data on load
     $('#firstName').focus(); // move cursor and focus to first input
-    $('#addAvenger').on('click', addAvenger);
-    $('input').on('keypress', checkForEnter);
-    $('#avengerTableBody').on('click', '.delete-avenger button', deleteAvenger);
+    $('#addAvenger').on('click', addAvenger); // bind click event to addAvenger
+    $('input').on('keypress', checkForEnter); // bind keypress event to inputs
+    $('#avengerTableBody').on('click', '.delete-avenger button', deleteAvenger); // bind click event to delete-avenger button
 } // end of domReady
 
 function addAvenger() {
@@ -57,16 +57,17 @@ function addAvenger() {
     if (first.length && last.length && id.length && title.length && salary.length) {
         // if all have values, make sure id is available
         const availableId = avengers.filter(x => x.avengerId === id);
-        if (availableId.length === 0) {
-            let newAvenger = createAvenger(first, last, id, title, Number(salary));
-            avengers.push(newAvenger);
+        if (!availableId.length) {
+            let newAvenger = createAvenger(first, last, id, title, Number(salary)); // create newAvenger object
+            avengers.push(newAvenger); // add newAvenger to the array of avengers
             $('input').val('') // clear the inputs
-            updateAvengerTable(); // update the table
+            updateAvengerTable(); // refresh the table once an avenger is added to the array
             $('#firstName').focus(); // move cursor back to first input
         }
         else {
-            $('#errorMsg').html('*ID is already in use, please use another.');
-            $('#avengerId').addClass('error-border');
+            $('#errorMsg').html('*ID is already in use, please use another.'); // update error message
+            $('#avengerId').addClass('error-border'); // add error border to the ID field
+            $('#avengerId').focus(); // move cursor to the ID field
         }
     } // end if all inputs have values
     else {
@@ -113,7 +114,7 @@ function updateAvengerTable() {
             </tr>
         `)
     }// end append row/data to table
-    updateTotalMonthly();
+    updateTotalMonthly(); // refresh monthly total after appending newAvenger
 } // end updateAvengerTable
 
 function updateTotalMonthly() {
@@ -121,7 +122,7 @@ function updateTotalMonthly() {
     for (let avenger of avengers) {
         totalSalary += avenger.annualSalary;
     }
-    totalMonthly = totalSalary / 12;
+    const totalMonthly = totalSalary / 12;
     if (totalMonthly > 20000) {
         $('.totalDisplayWrapper h2').addClass('over-budget'); // create red background for monthly salaries
         $('input, #addAvenger').attr({ disabled: true }).addClass('disabled'); //disable inputs and add disable class
@@ -139,13 +140,14 @@ function updateTotalMonthly() {
 function deleteAvenger() {
     for (let i = 0; i < avengers.length; i++) {
         if (avengers[i].avengerId === this.id) {
+            // confirm user wants to remove avenger from the array
             let confirmation = confirm(`Are you sure you want to fire ${avengers[i].title} from the Avengers?`);
             if (confirmation) {
                 avengers.splice(i, 1);
             }
         }
     }
-    updateAvengerTable();
+    updateAvengerTable(); // refresh table after avenger is removed
 }// end deleteAvenger
 
 // format numbers to currency

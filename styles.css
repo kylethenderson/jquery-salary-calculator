@@ -56,6 +56,7 @@ input {
     float: left;
     margin: 0px 5px;
     font-family: 'Marvel', sans-serif;
+    z-index: 10;
 }
 input:focus {
     box-shadow: 0 0 8px rgba(251, 202, 3, 1);
@@ -66,7 +67,7 @@ input.disabled {
     background-color: rgba(34, 34, 34, .25);
     cursor: not-allowed;
 }
-.error-border {
+input.error-border {
     box-shadow: 0 0 4px rgba(177, 19, 19, 1);
     border: 1px solid rgba(177, 19, 19, 1);
 }
@@ -77,6 +78,7 @@ input.disabled {
     position: relative;
     left: 5px;
     top: 5px;
+    z-index: -10;
 }
 #buttonWrapper {
     padding: 0;
